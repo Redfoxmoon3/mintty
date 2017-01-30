@@ -1315,10 +1315,10 @@ dlg_fontsel_set(control *ctrl, font_spec *fs)
   int wsize = wcslen(fs->name) + strlen(boldstr) + fs->size ? 31 : 17;
   wchar * wbuf = newn(wchar, wsize);
   if (fs->size)
-    swprintf(wbuf, wsize, L"%ls, %s%d%s", fs->name, boldstr, abs(fs->size),
+    host_swprintf(wbuf, wsize, L"%ls, %s%d%s", fs->name, boldstr, abs(fs->size),
              fs->size < 0 ? "px" : "pt");
   else
-    swprintf(wbuf, wsize, L"%ls, %sdefault size", fs->name, boldstr);
+    host_swprintf(wbuf, wsize, L"%ls, %sdefault size", fs->name, boldstr);
   SetDlgItemTextW(dlg.wnd, c->base_id + 1, wbuf);
   free(wbuf);
 #else
